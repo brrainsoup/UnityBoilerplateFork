@@ -67,9 +67,10 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
           GAME_CI_COVERAGE_ENABLED: 'false'
         with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
           testMode: ${{ matrix.testMode }}
           artifactsPath: ${{ matrix.testMode }}-test-results
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
+
 
       # Upload test results (including on failure — `if: always()`)
       - name: Upload test results
