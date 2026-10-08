@@ -26,7 +26,7 @@ jobs:
   # ------------------------------------------------------------------
   test:
     name: Run ${{ matrix.testMode }} tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest-8-cores
     permissions:
       checks: write # publish test results to the GitHub Checks UI
       contents: read
@@ -70,6 +70,7 @@ jobs:
           testMode: ${{ matrix.testMode }}
           artifactsPath: ${{ matrix.testMode }}-test-results
           githubToken: ${{ secrets.GITHUB_TOKEN }}
+          dockerImageSize: xlarge  
 
       # Upload test results (including on failure — `if: always()`)
       - name: Upload test results
